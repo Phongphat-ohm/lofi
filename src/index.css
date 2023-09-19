@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Prompt:wght@300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  scroll-behavior: smooth;
+}
+
+* {
+  font-family: 'Prompt', sans-serif;
+}
+
+body::-webkit-scrollbar {
+  background: none;
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 189);
+  border-radius: 100px;
+}
