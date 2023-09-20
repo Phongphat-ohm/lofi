@@ -5,6 +5,7 @@ import Home from './pages/home'
 import Footer from './component/footer'
 import Redirect from './pages/redireact'
 import Register from './pages/register'
+import AppMsc from './pages/app'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' Component={Home} />
         <Route path='/register' Component={Register} />
         <Route path='/redirect' Component={Redirect} />
+        <Route path='/app' Component={AppMsc} />
       </Routes>
       <Footer />
     </BrowserRouter>
