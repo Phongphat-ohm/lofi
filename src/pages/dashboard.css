@@ -1,0 +1,9 @@
+#chat-container::-webkit-scrollbar {
+    background: none;
+    width: 8px;
+}
+
+#chat-container::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 100px;
+}

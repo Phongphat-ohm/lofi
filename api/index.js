@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const { Users } = require('./function');
 const { Buffer } = require('buffer')
+const WebSocket = require('ws');
 
 const port = 3560;
 const app = express();
@@ -173,7 +174,8 @@ app.post('/register', async (req, res) => {
         })
     } else {
         try {
-            const adduser = await userscls.addUser(body.username, body.password, body.email, query.type);
+            const adduser = await userscls.addUser(body.username, body.password, body.email, body.url, query.type);
+            console.log(body.url);
             res.send(adduser)
         } catch (error) {
             res.send({

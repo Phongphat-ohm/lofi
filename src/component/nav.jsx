@@ -15,8 +15,6 @@ function Nav() {
     useState(() => {
         const user = window.localStorage.getItem('user');
 
-        console.log(user);
-
         if (user !== 'null' || user !== null) {
             setUserData(JSON.parse(user))
         }
@@ -25,6 +23,7 @@ function Nav() {
     const firebaseConfig = {
         apiKey: "AIzaSyB6hMrSlgJZMvEej61cXEaHhjVsG0FwwlI",
         authDomain: "lofi-stu.firebaseapp.com",
+        databaseURL: "https://lofi-stu-default-rtdb.asia-southeast1.firebasedatabase.app",
         projectId: "lofi-stu",
         storageBucket: "lofi-stu.appspot.com",
         messagingSenderId: "495811512979",
@@ -47,12 +46,16 @@ function Nav() {
             };
 
             $.ajax(settings).done(function (response) {
-                console.log(response);
                 if (response.status == 400) {
                     window.location = '/register?type=1&username=' + result._tokenResponse.firstName + "&email=" + result.user.email;
                 } else {
-                    window.localStorage.setItem('user', JSON.stringify(response.data))
-                    window.location = '/'
+                    if (response.data.status == '1' || response.data.status == 1) {
+                        window.localStorage.setItem('user', JSON.stringify(response.data))
+                        window.location = '/dashboard'
+                    } else {
+                        window.localStorage.setItem('user', JSON.stringify(response.data))
+                        window.location = '/'
+                    }
                 }
             });
             // console.log(result._tokenResponse.firstName);
@@ -69,7 +72,6 @@ function Nav() {
         };
 
         $.ajax(settings).done(function (response) {
-            console.log(response);
             if (response.status == 400) {
                 toast.error(response.message)
             } else {

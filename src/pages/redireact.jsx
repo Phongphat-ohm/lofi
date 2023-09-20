@@ -27,11 +27,17 @@ function Redirect() {
 
                     $.ajax(settings).done(function (response) {
                         console.log(response);
+                        const avatar_url = `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
                         if (response.status == 400) {
-                            window.location = '/register?type=1&username=' + userData.username + "&email=" + userData.email;
+                            window.location = '/register?type=1&username=' + userData.username + "&email=" + userData.email + "&photo_url=" + avatar_url;
                         } else {
                             window.localStorage.setItem('user', JSON.stringify(response.data))
-                            window.location = '/'
+
+                            if (userData.status == 1 || userData.status == "1") {
+                                window.location = '/dashboard'
+                            } else {
+                                window.location = '/'
+                            }
                         }
                     });
                 })

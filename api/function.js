@@ -48,7 +48,7 @@ function Users() {
         })
     }
 
-    this.addUser = async (username, password, email, type) => {
+    this.addUser = async (username, password, email, url, type) => {
         const checkuser = await this.getUsersWhere(username);
 
         if (checkuser.status == 400) {
@@ -56,7 +56,9 @@ function Users() {
                 username: username,
                 password: password,
                 type: type,
-                email: email
+                email: email,
+                status: 0,
+                image: url
             }
 
             const newItemRef = ref(db, 'users/' + username);

@@ -6,6 +6,7 @@ import Footer from './component/footer'
 import Redirect from './pages/redireact'
 import Register from './pages/register'
 import AppMsc from './pages/app'
+import DhHome from './pages/dashboard'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/register' Component={Register} />
         <Route path='/redirect' Component={Redirect} />
         <Route path='/app' Component={AppMsc} />
+        <Route path='/dashboard' Component={DhHome} />
       </Routes>
       <Footer />
     </BrowserRouter>
