@@ -66,7 +66,8 @@ function Users() {
                 return {
                     status: 200,
                     code: "SUCCESS",
-                    message: 'สร้างรายการใหม่เรียบร้อยแล้ว'
+                    message: 'สร้างรายการใหม่เรียบร้อยแล้ว',
+                    data: newItem
                 };
             } catch (error) {
                 return {

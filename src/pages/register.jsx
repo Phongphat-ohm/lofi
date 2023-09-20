@@ -80,9 +80,6 @@ function Register() {
                                     <input type="text" placeholder="รหัสผ่าน" onChange={(e) => {
                                         setPassword(e.target.value);
                                     }} className="input input-bordered" id='password-inp' />
-                                    <label className="label">
-                                        <a href="#" className="label-text-alt link link-hover">ลืมรหัสผ่าน</a>
-                                    </label>
                                 </div>
                                 <div className="form-control mt-6">
                                     <button className="btn btn-primary" onClick={register}>สมัครสมาชิก</button>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as config from './config.json';
+import $ from 'jquery';
 
 function Redirect() {
     useEffect(() => {
@@ -18,6 +19,21 @@ function Redirect() {
                 })
                 .then((userData) => {
                     console.log('ข้อมูลผู้ใช้:', userData);
+                    var settings = {
+                        "url": `http://localhost:3560/user/where?username=${userData.username}`,
+                        "method": "GET",
+                        "timeout": 0,
+                    };
+
+                    $.ajax(settings).done(function (response) {
+                        console.log(response);
+                        if (response.status == 400) {
+                            window.location = '/register?type=1&username=' + userData.username + "&email=" + userData.email;
+                        } else {
+                            window.localStorage.setItem('user', JSON.stringify(response.data))
+                            window.location = '/'
+                        }
+                    });
                 })
                 .catch((error) => {
                     console.error('เกิดข้อผิดพลาดในการดึงข้อมูลผู้ใช้:', error);

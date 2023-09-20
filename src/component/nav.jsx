@@ -10,6 +10,17 @@ import 'react-toastify/dist/ReactToastify.css'
 function Nav() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [userData, setUserData] = useState('');
+
+    useState(() => {
+        const user = window.localStorage.getItem('user');
+
+        console.log(user);
+
+        if (user !== 'null' || user !== null) {
+            setUserData(JSON.parse(user))
+        }
+    }, [])
 
     const firebaseConfig = {
         apiKey: "AIzaSyB6hMrSlgJZMvEej61cXEaHhjVsG0FwwlI",
@@ -68,6 +79,11 @@ function Nav() {
         });
     }
 
+    const logout = () => {
+        window.localStorage.setItem('user', null);
+        window.location.reload();
+    }
+
     return (
         <>
             <div className="navbar bg-base-200 bg-opacity-80 fixed w-full z-10">
@@ -89,11 +105,24 @@ function Nav() {
                         <li><a href='/app'><FaMobile /> App</a></li>
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn" onClick={() => {
-                        document.getElementById('login_modal').showModal()
-                    }}><FaArrowRightToBracket /> Login</a>
-                </div>
+                {userData == null ? (
+                    <div className="navbar-end">
+                        <a className="btn" onClick={() => {
+                            document.getElementById('login_modal').showModal()
+                        }}><FaArrowRightToBracket /> Login</a>
+                    </div>
+                ) : (
+                    <div className="navbar-end">
+                        <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn m-1">ข้อมูลผู้ใช้</label>
+                            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-80">
+                                <li><a>อีเมล: {userData.email}</a></li>
+                                <li><a>ชื่อผู้ใช้: {userData.username}</a></li>
+                                <li><a className='text-error' onClick={logout}>ออกจากระบบ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                )}
             </div>
             <dialog id="login_modal" className="modal">
                 <div className="modal-box">
@@ -118,12 +147,15 @@ function Nav() {
                             setPassword(e.target.value)
                         }} className="input input-bordered cursor-text" />
                         <label className="label">
-                            <a href="#" className="label-text-alt link link-hover">หรือว่าสมัครสมาชิก?</a>
+                            <a href="#" className="label-text-alt link link-hover">ลืมรหัสผ่าน</a>
                         </label>
                     </div>
-                    <div className="form-control mt-6">
+                    <div className="form-control mt-4">
                         <button className="btn btn-primary cursor-pointer" onClick={login}>เข้าสู่ระบบ</button>
                     </div>
+                    <label className="label">
+                        <a href="/register" className="label-text-alt link link-hover">หรือว่าสมัครสมาชิก?</a>
+                    </label>
                     <hr className="my-2 divider" />
                     <div className="flex justify-center">
                         <div onClick={googleSignin} className="rounded-full bg-base-300 p-3 text-red-500 mx-3 cursor-pointer">
