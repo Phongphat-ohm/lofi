@@ -40,7 +40,7 @@ function Nav() {
 
         signInWithPopup(auth, provider).then(result => {
             var settings = {
-                "url": `http://localhost:3560/user/where?username=${result._tokenResponse.firstName}`,
+                "url": `https://api-lofi-stu.onrender.com/user/where?username=${result._tokenResponse.firstName}`,
                 "method": "GET",
                 "timeout": 0,
             };
@@ -66,7 +66,7 @@ function Nav() {
 
     const login = () => {
         var settings = {
-            "url": `http://localhost:3560/login/0?username=${username}&password=${password}`,
+            "url": `https://api-lofi-stu.onrender.com/login/0?username=${username}&password=${password}`,
             "method": "GET",
             "timeout": 0,
         };

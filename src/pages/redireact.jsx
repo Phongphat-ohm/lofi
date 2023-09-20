@@ -20,7 +20,7 @@ function Redirect() {
                 .then((userData) => {
                     console.log('ข้อมูลผู้ใช้:', userData);
                     var settings = {
-                        "url": `http://localhost:3560/user/where?username=${userData.username}`,
+                        "url": `https://api-lofi-stu.onrender.com/user/where?username=${userData.username}`,
                         "method": "GET",
                         "timeout": 0,
                     };

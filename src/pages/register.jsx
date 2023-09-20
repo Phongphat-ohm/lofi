@@ -29,7 +29,7 @@ function Register() {
             document.getElementById('password-inp').className = 'input input-bordered input-error';
         } else {
             var settings = {
-                "url": "http://localhost:3560/register?type=1",
+                "url": "https://api-lofi-stu.onrender.com/register?type=1",
                 "method": "POST",
                 "timeout": 0,
                 "headers": {
