@@ -63,7 +63,7 @@ function DhHome() {
 
 
     const sendMessage = () => {
-        const user = JSON.parse(window.localStorage.getItem('user')) || { username: 'Default', image: 'Default-Image-URL' };
+        const user = JSON.parse(window.localStorage.getItem('user')) || { username: 'Admin', image: 'man.png' };
         const date = new Date();
 
         if (message.trim() !== '') {
