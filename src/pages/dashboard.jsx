@@ -114,7 +114,7 @@ function DhHome() {
                                 <div className="stat">
                                     <div className="stat-title">สถานะ server</div>
                                     <div className="stat-value font-mono text-5xl">ON</div>
-                                    <div className="stat-desc">คน</div>
+                                    <div className="stat-desc"></div>
                                 </div>
                                 <div className="text-7xl rounded-full bg-green-400 text-white p-3 h-auto flex justify-center items-center border-none">
                                     <BsServer />
@@ -128,7 +128,7 @@ function DhHome() {
                                 <div className="stat">
                                     <div className="stat-title">สถานะ Database</div>
                                     <div className="stat-value font-mono text-5xl">ON</div>
-                                    <div className="stat-desc">คน</div>
+                                    <div className="stat-desc"></div>
                                 </div>
                                 <div className="text-7xl rounded-full bg-yellow-300 text-white p-3 px-4 h-auto flex justify-center items-center border-none">
                                     <BsDatabase />
@@ -142,7 +142,7 @@ function DhHome() {
                                 <div className="stat">
                                     <div className="stat-title">สถานะ websocket</div>
                                     <div className="stat-value font-mono text-5xl">ON</div>
-                                    <div className="stat-desc">คน</div>
+                                    <div className="stat-desc"></div>
                                 </div>
                                 <div className="text-5xl rounded-full bg-pink-400 text-white w-30 px-8 h-auto flex justify-center items-center border-none">
                                     <BsWifi />
