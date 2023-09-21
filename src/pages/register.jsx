@@ -28,6 +28,10 @@ function Register() {
         } else if (!password) {
             document.getElementById('password-inp').className = 'input input-bordered input-error';
         } else {
+            if(!imgurl){
+                setimgurl('man.png');
+            }
+            
             var settings = {
                 "url": "https://api-lofi-stu.onrender.com/register?type=1",
                 "method": "POST",
@@ -39,7 +43,7 @@ function Register() {
                     "username": username,
                     "password": password,
                     "email": email,
-                    "url": imgurl // ใช้ค่า imgurl ที่ถูกตั้งค่าผ่าน useEffect
+                    "image": imgurl // ใช้ค่า imgurl ที่ถูกตั้งค่าผ่าน useEffect
                 }),
             };
 

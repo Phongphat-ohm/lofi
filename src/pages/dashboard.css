@@ -1,6 +1,6 @@
 #chat-container::-webkit-scrollbar {
     background: none;
-    width: 8px;
+    width: 5px;
 }
 
 #chat-container::-webkit-scrollbar-thumb {
