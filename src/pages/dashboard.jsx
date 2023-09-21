@@ -6,6 +6,7 @@ import { getDatabase, ref, push } from 'firebase/database';
 import { initializeApp } from "firebase/app";
 import { onChildAdded } from 'firebase/database';
 import { BsPerson, BsServer, BsDatabase, BsWifi } from 'react-icons/bs';
+import $ from 'jquery'
 
 const firebaseConfig = {
     apiKey: "AIzaSyB6hMrSlgJZMvEej61cXEaHhjVsG0FwwlI",
@@ -26,10 +27,22 @@ function DhHome() {
     const [snapshots, loading, error] = useList(ref(db, 'messages'));
     const [chatMessages, setChatMessages] = useState([]);
     const [username, setUsername] = useState('');
+    const [userCount, setUserCount] = useState(0);
 
     useEffect(() => {
         const user = JSON.parse(window.localStorage.getItem('user')) || { username: 'Default', image: 'Default-Image-URL' };
         setUsername(user.username);
+
+        var settings = {
+            "url": "https://lofi-stu-default-rtdb.asia-southeast1.firebasedatabase.app/users.json",
+            "method": "GET",
+            "timeout": 0,
+        };
+
+        $.ajax(settings).done(function (response) {
+            const objectLength = Object.keys(response).length;
+            setUserCount(objectLength)
+        });
 
         setChatMessages([]);
 
@@ -82,7 +95,7 @@ function DhHome() {
                             <div className="stats">
                                 <div className="stat">
                                     <div className="stat-title">จำนวนสมาชิก</div>
-                                    <div className="stat-value font-mono text-5xl">1000</div>
+                                    <div className="stat-value font-mono text-5xl">{userCount}</div>
                                     <div className="stat-desc">คน</div>
                                 </div>
                                 <div className="text-7xl rounded-full bg-blue-500 text-white p-3 h-auto flex justify-center items-center border-none">
@@ -164,8 +177,8 @@ function DhHome() {
                                 width: "90%"
                             }}
                             id='inp-message'
-                            onKeyDown={(e)=>{
-                                if(e.code == "Enter"){
+                            onKeyDown={(e) => {
+                                if (e.code == "Enter") {
                                     sendMessage()
                                 }
                             }}
