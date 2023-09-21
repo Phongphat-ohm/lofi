@@ -47,8 +47,9 @@ function Nav() {
 
             $.ajax(settings).done(function (response) {
                 if (response.status == 400) {
-                    window.location = '/register?type=1&username=' + result._tokenResponse.firstName + "&email=" + result.user.email;
+                    window.location = '/register?type=1&username=' + result._tokenResponse.firstName + "&email=" + result.user.email + "&photo_url=" + result.user.photoURL;
                 } else {
+                    console.log(result);
                     if (response.data.status == '1' || response.data.status == 1) {
                         window.localStorage.setItem('user', JSON.stringify(response.data))
                         window.location = '/dashboard'

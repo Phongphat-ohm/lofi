@@ -23,7 +23,7 @@ const db = getDatabase(app);
 
 function DhHome() {
     const [message, setMessage] = useState('');
-    const [snapshots, loading, error] = useList(ref(db, 'message'));
+    const [snapshots, loading, error] = useList(ref(db, 'messages'));
     const [chatMessages, setChatMessages] = useState([]);
     const [username, setUsername] = useState('');
 
@@ -33,7 +33,7 @@ function DhHome() {
 
         setChatMessages([]);
 
-        const messagesRef = ref(db, 'message');
+        const messagesRef = ref(db, 'messages');
 
         onChildAdded(messagesRef, (snapshot) => {
             const newMessage = { key: snapshot.key, ...snapshot.val() };
@@ -50,7 +50,7 @@ function DhHome() {
         const date = new Date();
 
         if (message.trim() !== '') {
-            const messagesRef = ref(db, 'message');
+            const messagesRef = ref(db, 'messages');
             push(messagesRef, {
                 text: message,
                 author: {
@@ -124,7 +124,7 @@ function DhHome() {
                             <div className="stats">
                                 <div className="stat">
                                     <div className="stat-title">สถานะ websocket</div>
-                                    <div className="stat-value font-mono text-5xl text-red-500">OFF</div>
+                                    <div className="stat-value font-mono text-5xl">ON</div>
                                     <div className="stat-desc">คน</div>
                                 </div>
                                 <div className="text-5xl rounded-full bg-pink-400 text-white w-30 px-8 h-auto flex justify-center items-center border-none">
@@ -164,6 +164,11 @@ function DhHome() {
                                 width: "90%"
                             }}
                             id='inp-message'
+                            onKeyDown={(e)=>{
+                                if(e.code == "Enter"){
+                                    sendMessage()
+                                }
+                            }}
                         />
                         <button
                             className='btn text-white btn-success ml-3 flex'
