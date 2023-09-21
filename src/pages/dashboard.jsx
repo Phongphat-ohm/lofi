@@ -30,8 +30,12 @@ function DhHome() {
     const [userCount, setUserCount] = useState(0);
 
     useEffect(() => {
-        const user = JSON.parse(window.localStorage.getItem('user')) || { username: 'Default', image: 'Default-Image-URL' };
+        const user = JSON.parse(window.localStorage.getItem('user')) || { username: 'adminnnn', image: 'man.png' };
         setUsername(user.username);
+
+        if(user.status == 0){
+            window.location = '/'
+        }
 
         var settings = {
             "url": "https://lofi-stu-default-rtdb.asia-southeast1.firebasedatabase.app/users.json",

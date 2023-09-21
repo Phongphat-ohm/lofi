@@ -164,7 +164,7 @@ function Nav() {
                         <div onClick={googleSignin} className="rounded-full bg-base-300 p-3 text-red-500 mx-3 cursor-pointer">
                             <FaGoogle />
                         </div>
-                        <a href='https://discord.com/api/oauth2/authorize?client_id=1153655023956402256&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Fredirect&response_type=code&scope=identify%20email' className="rounded-full bg-base-300 p-3 text-blue-500 mx-3">
+                        <a href='https://discord.com/api/oauth2/authorize?client_id=1153655023956402256&redirect_uri=https%3A%2F%2Flofi-stu.web.app%2Fredirect&response_type=code&scope=identify%20email' className="rounded-full bg-base-300 p-3 text-blue-500 mx-3">
                             <FaDiscord />
                         </a>
                     </div>
