@@ -1,4 +1,4 @@
-deploy
+# deploy พิมพ์
 ```bash
 ./run.bat
 ```
