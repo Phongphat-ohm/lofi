@@ -1,6 +1,4 @@
 deploy
-```sh
+```bash
 ./run.bat
 ```
-
-Hello
