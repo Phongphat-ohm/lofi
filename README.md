@@ -1,4 +1,4 @@
-commit & deploy
+deploy
 ```sh
 ./run.bat
 ```
