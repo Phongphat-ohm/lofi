@@ -89,4 +89,66 @@ function Users() {
     }
 }
 
-module.exports = { Users }
+function Song() {
+    this.addSong = async (name, time) => {
+        const dataSong = {
+            name: name,
+            time: time
+        }
+
+        const newItemRef = await ref(db, 'songs/' + name);
+
+        await set(newItemRef, dataSong)
+
+        return {
+            status: 200,
+            code: "SUCCESS",
+            message: "สำเร็จ",
+            data: dataSong
+        }
+    }
+
+    this.getSongs = async () => {
+        const refer = ref(db, '/songs');
+
+        return get(refer).then(snapshot => {
+            if (snapshot.exists()) {
+                return {
+                    status: 200,
+                    code: "SUCCESS",
+                    message: "สำเร็จ",
+                    data: snapshot.val()
+                }
+            } else {
+                return {
+                    status: 400,
+                    code: "NOT_FOUND_SONFS",
+                    message: "ไม่พบเพลง"
+                }
+            }
+        })
+    }
+
+    this.getSongWhere = async (name) => {
+        const refer = ref(db, '/songs/' + name);
+
+        return get(refer).then(snapshot => {
+            if (snapshot.exists()) {
+                return {
+                    status: 200,
+                    code: "SUCCESS",
+                    message: "สำเร็จ",
+                    data: snapshot.val()
+                }
+            } else {
+                return {
+                    status: 400,
+                    code: "NOT_FOUND_SONFS",
+                    message: "ไม่พบเพลง"
+                }
+            }
+        })
+    }
+}
+
+module.exports = { Users, Song }
