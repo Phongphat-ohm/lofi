@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
 import Swal from 'sweetalert2'
+import Nav from '../component/nav';
 
 function Register() {
     const [email, setEmail] = useState('');
@@ -28,10 +29,10 @@ function Register() {
         } else if (!password) {
             document.getElementById('password-inp').className = 'input input-bordered input-error';
         } else {
-            if(!imgurl){
+            if (!imgurl) {
                 setimgurl('man.png');
             }
-            
+
             var settings = {
                 "url": "https://api-lofi-stu.onrender.com/register?type=1",
                 "method": "POST",
@@ -61,6 +62,8 @@ function Register() {
 
     return (
         <>
+            <Nav />
+
             {type == 1 ? (
                 <div className="hero min-h-screen">
                     <div className="hero-content flex-col lg:flex-row-reverse">

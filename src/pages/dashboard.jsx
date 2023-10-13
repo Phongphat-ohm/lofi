@@ -7,6 +7,7 @@ import { initializeApp } from "firebase/app";
 import { onChildAdded } from 'firebase/database';
 import { BsPerson, BsServer, BsDatabase, BsWifi } from 'react-icons/bs';
 import $ from 'jquery'
+import Nav from '../component/nav';
 
 const firebaseConfig = {
     apiKey: "AIzaSyB6hMrSlgJZMvEej61cXEaHhjVsG0FwwlI",
@@ -33,7 +34,7 @@ function DhHome() {
         const user = JSON.parse(window.localStorage.getItem('user')) || { username: 'adminnnn', image: 'man.png' };
         setUsername(user.username);
 
-        if(user.status == 0){
+        if (user.status == 0) {
             window.location = '/'
         }
 
@@ -91,6 +92,7 @@ function DhHome() {
 
     return (
         <div className="h-screen max-sm:h-auto">
+            <Nav />
             <br /><br /><br /><br />
             <div className="container mx-auto px-5">
                 <div className="grid grid-cols-4 max-sm:grid-cols-1">

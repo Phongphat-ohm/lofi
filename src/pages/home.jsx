@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { FaMobile } from 'react-icons/fa6';
+import Nav from '../component/nav';
 
 function Home() {
     return (
         <>
+            <Nav />
             <div className="h-screen hero">
                 <div className="hero-content text-center">
                     <div className="max-w-md">

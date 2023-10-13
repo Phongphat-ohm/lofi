@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as config from './config.json';
 import $ from 'jquery';
+import Nav from '../component/nav';
 
 function Redirect() {
     useEffect(() => {
@@ -85,6 +86,7 @@ function Redirect() {
 
     return (
         <>
+            <Nav />
             <div className="h-screen flex justify-center items-center flex-col">
                 <label className="my-2">กำลังโหลดข้อมูลรอสักครู่ (ห้าม reload page)</label>
                 <span className="loading loading-dots loading-lg"></span>

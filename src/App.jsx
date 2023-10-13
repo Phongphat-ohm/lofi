@@ -11,7 +11,6 @@ import DhHome from './pages/dashboard'
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
       <Routes>
         <Route path='/' Component={Home} />
         <Route path='/register' Component={Register} />
